@@ -18,6 +18,42 @@
 
 OpenCode ищет скиллы в `.opencode/skills` проекта и в глобальном каталоге: `~/.config/opencode/skills` или `~/.agents/skills`. Файл `SKILL.md` лежит в корне каталога скилла.
 
+### Через npx skills
+
+CLI `skills` устанавливает скилл из GitHub или локальной папки. Нужен Node.js 22.20 или новее.
+
+В текущий проект:
+
+```bash
+npx skills add ishkulov/tech-writer-ru --skill tech-writer-ru -a opencode
+```
+
+Глобально, для всех проектов:
+
+```bash
+npx skills add ishkulov/tech-writer-ru --skill tech-writer-ru -a opencode -g
+```
+
+Из локальной копии:
+
+```bash
+npx skills add /path/to/tech-writer-ru --skill tech-writer-ru -a opencode
+```
+
+Флаг `-y` отключает вопросы. Скилл устанавливается в `.agents/skills/tech-writer-ru` проекта или в `~/.agents/skills/tech-writer-ru` при `-g`; OpenCode читает оба каталога. Версия и хеш файлов для проекта записываются в `skills-lock.json`, для глобальной установки — в `~/.agents/.skill-lock.json`.
+
+Проверка, обновление и удаление:
+
+```bash
+npx skills list
+npx skills update tech-writer-ru
+npx skills remove tech-writer-ru
+```
+
+Обновление работает для установки из GitHub. Локальную копию нужно устанавливать заново.
+
+### Вручную
+
 Для проекта:
 
 ```bash
