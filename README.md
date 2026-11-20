@@ -8,7 +8,7 @@
 - `references/terminology.md` — универсальные термины, UI-действия и внутренний сленг.
 - `references/glossary-template.md` — шаблон глоссария продукта.
 - `references/localization.md` — перевод и локализация.
-- `references/genres.md` — инструкции, UI-тексты, ошибки, релиз-ноты, API/CLI и README.
+- `references/genres.md` — инструкции, UI-тексты, ошибки, примечания к выпуску, API/CLI и README.
 - `references/accessibility.md` — доступность и инклюзивность.
 - `references/style.md` — примеры «Плохо → Хорошо».
 - `references/checklist.md` — проверка перед выдачей.
