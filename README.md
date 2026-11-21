@@ -7,70 +7,57 @@
 - `SKILL.md` — порядок работы с режимами и восемь правил.
 - `references/examples.md` — примеры «плохо → хорошо» и таблица запрещённых слов.
 
+## Совместимость
+
+Навык соответствует открытой спецификации Agent Skills: каталог с файлом `SKILL.md` и YAML-заголовком `name` и `description`. Навык работает в любом агенте, который поддерживает эту спецификацию: Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, Cline, Windsurf, Roo Code, Zed, OpenCode и других. Полный список агентов и каталогов — в документации skills CLI: https://github.com/vercel-labs/skills/blob/main/docs/agents.md.
+
 ## Установка
-
-OpenCode V2 ищет навыки в этих каталогах:
-
-| Область | Каталоги |
-| --- | --- |
-| Проект | `.opencode/skills`, `.agents/skills`, `.claude/skills` |
-| Глобально | `~/.config/opencode/skills`, `~/.agents/skills`, `~/.claude/skills` |
-
-### Через npx skills
 
 Для установки нужен Node.js 22.20 или новее.
 
 В текущий проект:
 
 ```bash
-npx skills add ishkulov/tech-writer-ru --skill tech-writer-ru -a opencode
+npx skills add ishkulov/tech-writer-ru
 ```
 
 Глобально, для всех проектов:
 
 ```bash
-npx skills add ishkulov/tech-writer-ru --skill tech-writer-ru -a opencode -g
+npx skills add ishkulov/tech-writer-ru -g
 ```
 
-Обновление и удаление:
+Обновить навык:
 
-| Задача | Команда |
-| --- | --- |
-| Обновить навык | `npx skills update tech-writer-ru` |
-| Удалить навык | `npx skills remove tech-writer-ru` |
+```bash
+npx skills update tech-writer-ru
+```
 
-### Установка вручную
+Удалить навык:
 
-1. Если каталога `~/.agents/skills` нет, создайте его:
-
-   ```bash
-   mkdir -p ~/.agents/skills
-   ```
-
-2. Создайте символьную ссылку:
-
-   ```bash
-   ln -s /path/to/tech-writer-ru ~/.agents/skills/tech-writer-ru
-   ```
-
-3. Убедитесь, что файл `~/.agents/skills/tech-writer-ru/SKILL.md` доступен.
-
-Ссылка в глобальном каталоге делает навык доступным во всех проектах. Для проекта создайте такую же ссылку в `.opencode/skills` или `.agents/skills` проекта.
-
-В Windows скопируйте каталог `tech-writer-ru` в `%USERPROFILE%\.agents\skills\tech-writer-ru`.
+```bash
+npx skills remove tech-writer-ru
+```
 
 ## Использование
 
-Если задача совпадает с описанием из `SKILL.md`, OpenCode вызывает навык автоматически. Вызовите навык вручную:
+Агент вызывает навык автоматически, если задача совпадает с описанием из `SKILL.md`. Вызовите навык вручную способом, который принят в вашем агенте: упоминанием, слэш-командой или просьбой.
 
 ```text
 @tech-writer-ru отредактируй этот текст
 ```
 
-Примеры для проверки и перевода:
+```text
+Примени навык tech-writer-ru и отредактируй этот текст.
+```
+
+В OpenCode упомяните навык в запросе:
 
 ```text
 @tech-writer-ru проверь этот текст
+```
+
+```text
 @tech-writer-ru переведи этот текст с английского на русский
 ```
 
@@ -84,7 +71,7 @@ npx skills add ishkulov/tech-writer-ru --skill tech-writer-ru -a opencode -g
 4. Установите навык из локального каталога:
 
    ```bash
-   npx skills add ./tech-writer-ru --skill tech-writer-ru -a opencode
+   npx skills add ./tech-writer-ru
    ```
 
    Замените `./tech-writer-ru` на путь к вашей копии.
